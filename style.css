@@ -1,0 +1,46 @@
+.table {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100vh;
+    height: 100vh;
+}
+
+.cell {
+    width: 10vh;
+    height: 10vh;
+    font-size: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    background: black;
+    color: white;
+}
+
+.number {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: calc(100vmax - 100vmin);
+    font-size: calc(100vmax - 100vmin);
+}
+
+.num-outer {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.num-outer > :first-child {
+    flex: 1;
+}
+
+.num-outer > :last-child {
+    flex: 0;
+}
