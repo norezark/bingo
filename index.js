@@ -22,27 +22,28 @@ $(() => {
 	
 	$('#number').addClass('number').html('0');
 	
-	let enChusen = false;
-	window.addEventListener('keypress', (e) => {
-		if (e.keyCode === 32 && !enChusen) {
-			enChusen = true;
-			$('#text').hide();
-			const timer = setInterval(() => {
-				$('.number').html(Math.floor(Math.random() * 100));
-			}, 20);
-			setTimeout(() => {
-				clearInterval(timer);
-				let num;
-				if (numbers.length === 0) {
-					num = -1;
+	let enWait = true;
+	let timer;
+	window.addEventListener('keydown', (e) => {
+			if(e.keyCode === 32){
+				if (enWait) {
+					enWait = false;
+					$('#text').hide();
+					timer = setInterval(() => {
+						$('.number').html(Math.floor(Math.random() * 100));
+					}, 20);
+				} else {
+					enWait = true;
+					clearInterval(timer);
+					let num;
+					if (numbers.length === 0) {
+						num = -1;
+					} else {
+						num = numbers.pop();
+					}
+					$('.number').html(num);
+					$('.table > .cell:nth-child(' + (num + 1) + ')').css('visibility', 'unset');
 				}
-				else {
-					num = numbers.pop();
-				}
-				$('.number').html(num);
-				$('.table > .cell:nth-child(' + (num + 1) + ')').css('visibility', 'unset');
-				enChusen = false;
-			}, 1000);
-		}
+			}
 	});
 });
