@@ -10,7 +10,7 @@ $(() => {
 				text: i * 10 + j + 1
 			}).appendTo('.table').css('visibility', 'hidden');
 			
-			numbers.push(i * 10 + j);
+			numbers.push(i * 10 + j + 1);
 		}
 	}
 	for (let i = numbers.length - 1; i > 0; i--) {
@@ -40,14 +40,12 @@ $(() => {
 			} else {
 				enWait = true;
 				clearInterval(timer);
-				let num;
-				if (numbers.length === 0) {
-					num = 0;
-				} else {
+				let num = 0;
+				if (numbers.length !== 0) {
 					num = numbers.pop();
 				}
 				$('.number').html(num);
-				$('.table > .cell:nth-child(' + (num + 1) + ')').css('visibility', 'unset');
+				$('.table > .cell:nth-child(' + (num) + ')').css('visibility', 'unset');
 				dururu.pause();
 				dururu.currentTime = 0;
 				tiiin.play();
